@@ -81,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         guidePage.classList.add('displayed');
         showFixedNavigation();
+        filterMenu.style.display = 'none';
     })
 
 
@@ -115,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         homePage.classList.add('displayed');
+        filterMenu.style.display = 'flex';
     })
 
     // guide page back button
