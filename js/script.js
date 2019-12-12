@@ -26,6 +26,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // get the element with the displayed and delete it depending 
     // on the page
     // Delete class from all function
+
+    if (window.localStorage.getItem("currentPage")) {
+        let currentPage = document.getElementById(window.localStorage.getItem("currentPage"));
+        removeDisplayedClass();
+        showFixedNavigation();
+        currentPage.classList.add('displayed')
+    }
+
     function removeDisplayedClass() {
         let displayedClass = document.querySelectorAll('.displayed');
         displayedClass.forEach(cls => {
@@ -45,6 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     skipButton.addEventListener('click', () => {
         removeDisplayedClass();
         ingredientsPage.classList.add('displayed');
+        localStorage.setItem("currentPage", "ingredients-page");
         showFixedNavigation();
         addActivemenu();
     })
@@ -54,6 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     recipeButton.addEventListener('click', () => {
         removeDisplayedClass();
         homePage.classList.add('displayed');
+        localStorage.setItem("currentPage", "home-page");
         showFixedNavigation();
         recipePage.classList.remove('displayed');
         //display menu from this page
@@ -77,11 +87,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // Recipe to guide page - button
+    recipeToGuidePage.addEventListener('click', () => {
+        removeDisplayedClass();
+        guidePage.classList.add('displayed');
+        localStorage.setItem("currentPage", "guide-page");
+        showFixedNavigation();
+        filterMenu.style.display = 'none';
+    })
+
     // Products button
     let productsButton = document.getElementById('products__button');
     productsButton.addEventListener('click', () => {
         removeDisplayedClass();
         ingredientsPage.classList.add('displayed');
+        localStorage.setItem("currentPage", "ingredients-page");
         showFixedNavigation();
         addActivemenu();
     });
@@ -93,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         recipePage.classList.add('displayed');
-
+        localStorage.setItem("currentPage", "recipe-page");
     })
 
     // ingredients Page Back Button
@@ -101,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         homePage.classList.add('displayed');
+        localStorage.setItem("currentPage", "home-page");
     })
 
     // recipe Page Back Button
@@ -108,6 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         homePage.classList.add('displayed');
+        localStorage.setItem("currentPage", "home-page");
         filterMenu.style.display = 'flex';
     })
 
@@ -116,5 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         recipePage.classList.add('displayed');
+        localStorage.setItem("currentPage", "recipe-page");
+
     })
 });
