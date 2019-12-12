@@ -1,42 +1,47 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const baseUrl = "https://api-hungry-bible.azurewebsites.net/api/recipe/1";
 
     var currentStep = 0;
     setBarry(0);
 
     (async function getRecipeData() {
-        const getJson = await fetch("//js/fakeguide.json");
-        const realJson = await getJson.json();
+        const fetchedRecipeGuides = await fetch(baseUrl, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        const realFetchedRecipeGuides = await fetchedRecipeGuides.json();
 
-        realJson.ingredients.forEach(ingredient => {
+        realFetchedRecipeGuides.recipeIngredients.forEach(randomObjectWithoutName => {
             document.querySelector('.ingredient__stuff-container').innerHTML += `
-            <div class="ingredient__ingredients-container guide__step-displayed">
+            <div class="ingredient__ingredients-container guide__step-displayed ${randomObjectWithoutName.ingredient.type}">
                 <div>
-                    <h1>${ingredient.number}</h1>
+                    <h1>${randomObjectWithoutName.ingredient.name}</h1>
                 </div>
 
                 <div>
-                    <p>${ingredient.text}</p>
+                    <p>${randomObjectWithoutName.ingredient.type}</p>
                 </div>        
             </div>
             `;
         });
 
-        realJson.guide.forEach(step => {
+        realFetchedRecipeGuides.recipeRecipeSteps.forEach(randomStepWithoutName => {
             document.querySelector('.guide-content').innerHTML += `
             <div class="guide__text-container">
                 <div>
-                    <h1>${step.number}</h1>
+                    <h1>${randomStepWithoutName.recipeStep.recipeStepId}</h1>
                 </div>
         
                 <div>
-                    <p>${step.text}</p>
+                    <p>${randomStepWithoutName.recipeStep.recipeStepDescription}</p>
                 </div>     
             </div>
             `;    
         });        
 
         document.querySelector(".guide__step-button--increase").addEventListener("click", () => {
-            if (currentStep < realJson.guide.length) {
+            if (currentStep < realFetchedRecipeGuides.recipeRecipeSteps.length) {
                 currentStep ++;
                 changeStep();
             };
