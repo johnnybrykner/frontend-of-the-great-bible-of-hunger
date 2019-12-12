@@ -105,6 +105,7 @@
 .glide__slides {
     display: flex;
     align-items: center;
+    font-size: 13px !important;
 }
 
 .glide__slide--meal {
@@ -114,7 +115,10 @@
     align-items: center;
     justify-content: space-between;
 }
-
+.meal--center {
+    display: flex;
+    justify-content: center;
+}
 
 /* Set active pasive and active color transition */
 
