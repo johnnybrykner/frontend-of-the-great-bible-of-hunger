@@ -5,13 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.setProperty('--vh', vh + 'px');
 
     // vars for pages:
-    let landingPage = document.getElementById('ldn-screen--js');
     let homePage = document.getElementById('home-page');
-    //let fixedNavigation = document.getElementById('recipe-listing-page');
     let recipePage = document.getElementById('recipe-page');
     let ingredientsPage = document.getElementById('ingredients-page');
-    let recipeToGuidePage = document.getElementById('recipe-to-guide-page');
-    let guidePage = document.getElementById('guide-page');
 
     //vars for back buttons:
     let ingredientsPageBack = document.getElementById('ingredients-page-back');
@@ -89,15 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Recipe to guide page - button
-    recipeToGuidePage.addEventListener('click', () => {
-        removeDisplayedClass();
-        guidePage.classList.add('displayed');
-        localStorage.setItem("currentPage", "guide-page");
-        showFixedNavigation();
-        filterMenu.style.display = 'none';
-    })
-
     // Products button
     let productsButton = document.getElementById('products__button');
     productsButton.addEventListener('click', () => {
@@ -142,6 +129,9 @@ document.addEventListener("DOMContentLoaded", () => {
         showFixedNavigation();
         recipePage.classList.add('displayed');
         localStorage.setItem("currentPage", "recipe-page");
-
     })
 });
+
+    // let recipeToGuidePage = document.getElementById('recipe-to-guide-page');
+    // let guidePage = document.getElementById('guide-page');
+    //let fixedNavigation = document.getElementById('recipe-listing-page');
