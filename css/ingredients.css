@@ -49,14 +49,16 @@
 .ingredients__list {
   display: flex;
   flex-flow: column nowrap;
+  margin-bottom: 5rem;
 }
 .ingredients__list__ingredient {
   display: flex;
   flex-flow: column nowrap;
   margin: 1rem 0;
   font-family: 'Nunito Sans', sans-serif;
-  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,.5);
+  box-shadow: 0 0.25em 0.5em 0 rgba(0,0,0,.1);
   padding: 1rem;
+  border-radius: 25px;
 }
 .ingredients__list__ingredient figcaption {
   padding: .5rem 0;
@@ -76,4 +78,7 @@
   height: min-content;
   padding: 1rem;
   border-radius: 10px;
+}
+.ingredients__list__ingredient__delete {
+  text-align: right;
 }
