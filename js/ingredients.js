@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const baseUrl = "http://localhost:5000/api/ingredient";
+  const baseUrl = "https://api-hungry-bible.azurewebsites.net/api/ingredient";
   let empty = false;
 
   const ingredientsList = document.querySelector(".ingredients__list");
@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const actualIngredient = await rawIngredient.json();
     if (actualIngredient && actualIngredient.status) {
       errorMessage.classList.add("thrown");
+      errorMessage.innerText = "Sorry, this ingredient does not exist in our database";
       return;
     }
     renderIngredient(actualIngredient);
@@ -55,10 +56,16 @@ document.addEventListener("DOMContentLoaded", () => {
       fetchIngredient(inputValue);
     } else {
       errorMessage.classList.add("thrown");
+      errorMessage.innerText = "Invalid input value"
     }
   };
 
   function renderIngredient(ingredient) {
+    if (document.getElementById(ingredient.ingredientId)) {
+      errorMessage.classList.add("thrown");
+      errorMessage.innerText = `You already have ${ingredient.name} in your list`
+      return;
+    };
     if (empty === true) {
       ingredientsList.innerHTML = "<h5>Your ingredients:</h5>";
       empty = false;
@@ -66,17 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
     const outputIngredient = document.createElement("figure");
     outputIngredient.classList.add("ingredients__list__ingredient");
     outputIngredient.innerHTML = `
-      <figcaption>${ingredient.name}</figcaption>
+      <figcaption id="${ingredient.ingredientId}">${ingredient.name}</figcaption>
       <div class="ingredients__list__ingredient__data">
-        <img src="${ingredient.imageURL}">
+        <img src="https://imbindonesia.com/images/placeholder/food.png">
         <div class="ingredients__list__ingredient__type">${ingredient.type}</div>
       </div>
+      <span class="material-icons ingredients__list__ingredient__delete" data-ingredient-bound="${ingredient.ingredientId}">delete</span>
     `;
+    outputIngredient.querySelector(".ingredients__list__ingredient__delete").addEventListener("click", () => removeIngredient(ingredient.ingredientId));
     ingredientsList.append(outputIngredient);
+    
     let savedIngredients = window.localStorage.getItem("saved-ingredients");
     if (savedIngredients) savedIngredients = savedIngredients.split(",");
     if (!savedIngredients) savedIngredients = [];
     if (!savedIngredients.includes(ingredient.ingredientId.toString())) savedIngredients.push(ingredient.ingredientId);
     window.localStorage.setItem("saved-ingredients", savedIngredients.toString());
+  };
+
+  function removeIngredient(ingredientId) {
+    let savedIngredients = window.localStorage.getItem("saved-ingredients");
+    if (savedIngredients) savedIngredients = savedIngredients.split(",").filter(savedId => savedId !== ingredientId.toString());
+    window.localStorage.setItem("saved-ingredients", savedIngredients.toString());
+    const elementToBeDeleted = document.getElementById(ingredientId).parentElement;
+    elementToBeDeleted.parentElement.removeChild(elementToBeDeleted);
   }
 });
