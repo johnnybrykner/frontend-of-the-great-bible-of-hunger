@@ -5,14 +5,14 @@ orange boxes. */
     flex-flow: column nowrap;
     font-size: 40px;
     margin-top: 50px;
-    margin-left: 10px;
+    margin-left: 30px;
     padding: 0px;
 }
 .home__container {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
-    padding: 24px;
+    padding: 30px;
     min-height: var(--vh);
 }
 
@@ -31,7 +31,7 @@ gives it a higher margin-bottom. */
 }
 .home__position {
     position: relative;
-    height: 260px;
+    height: 300px;
 }
 /* The flexbox of these orange boxes. */
 .home__lets-cook--flexie, .home__recommended--flexie {
@@ -79,6 +79,7 @@ be positioned differently. */
 }
 .home__number {
     position: absolute;
-    top: 2%;
-    right: 2%;
+    top: 4%;
+    right: 10px;
+    font-size: 4em;
 }
