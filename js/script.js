@@ -76,14 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log('This is the worst code I have written in my life')
         }
     }
-    // Recipe to guide page - button
-    recipeToGuidePage.addEventListener('click', () => {
-        removeDisplayedClass();
-        guidePage.classList.add('displayed');
-        showFixedNavigation();
-        filterMenu.style.display = 'none';
-    })
-
 
     // Products button
     let productsButton = document.getElementById('products__button');
