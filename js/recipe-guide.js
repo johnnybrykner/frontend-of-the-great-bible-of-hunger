@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setBarry(0);
 
     (async function getRecipeData() {
-        const getJson = await fetch("/frontend/js/fakeguide.json");
+        const getJson = await fetch("//js/fakeguide.json");
         const realJson = await getJson.json();
 
         realJson.ingredients.forEach(ingredient => {

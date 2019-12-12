@@ -29,13 +29,19 @@ mealTime.on('swipe.end', function() {
 })
 mealTime.mount();
 
-
-const sliders = document.querySelectorAll('.glide__cuisine');
-sliders.forEach(slider => {
-    new Glide(slider, small__conf).mount();
+// Cuisine slider
+let mealCuisine = new Glide('.glide__cuisine', small__conf)
+mealCuisine.on('swipe.end', function() {
+    console.log(mealCuisine._c.Html.slides[mealCuisine.index].innerHTML);
 })
+mealCuisine.mount();
 
-
+// Diet slide
+let mealDiet = new Glide('.glide__diet', small__conf)
+mealDiet.on('swipe.end', function() {
+    console.log(mealDiet._c.Html.slides[mealDiet.index].innerHTML);
+})
+mealDiet.mount();
 
 // Creating menu open/close function
 var menuButton = document.getElementById('menu__trigger--js');
