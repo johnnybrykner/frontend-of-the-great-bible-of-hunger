@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+    var recipesData = [];
+
     const vh = window.innerHeight;
     document.body.style.setProperty('--vh', vh + 'px');
 
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showFixedNavigation();
         recipePage.classList.remove('displayed');
         //display menu from this page
-        filterMenu.style.display = 'flex';
+        // filterMenu.style.display = 'flex';
         addActivemenu();
     });
 
@@ -114,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showFixedNavigation();
         recipePage.classList.add('displayed');
         localStorage.setItem("currentPage", "recipe-page");
+        filterMenu.style.display = 'flex';
     })
 
     // ingredients Page Back Button
@@ -130,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showFixedNavigation();
         homePage.classList.add('displayed');
         localStorage.setItem("currentPage", "home-page");
-        filterMenu.style.display = 'flex';
+        filterMenu.style.display = 'none';
     })
 
     // guide page back button
