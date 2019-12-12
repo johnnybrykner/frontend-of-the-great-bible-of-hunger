@@ -33,6 +33,7 @@
   line-height: 1.5rem;
   border: none;
   border-bottom: 2px solid var(--black);
+  background: transparent;
 }
 .ingredients__input-field {
   display: flex;
