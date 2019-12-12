@@ -15,31 +15,37 @@ const big__conf = {
     startAt: 0
 }
 
+let selectedFilters = {};
+
 // Create meal slider
 let mealType = new Glide('.glide', small__conf)
-mealType.on('swipe.end', function() {
+mealType.on('swipe.end', function () {
     console.log(mealType._c.Html.slides[mealType.index].childNodes[3].innerHTML);
+    selectedFilters['type'] = mealType._c.Html.slides[mealType.index].childNodes[3].innerHTML;
 })
 mealType.mount();
 
 // Create time slider
 let mealTime = new Glide('.glide__time', big__conf);
-mealTime.on('swipe.end', function() {
+mealTime.on('swipe.end', function () {
     console.log(mealTime._c.Html.slides[mealTime.index].innerHTML);
+    selectedFilters['time'] = mealTime._c.Html.slides[mealTime.index].innerHTML;
 })
 mealTime.mount();
 
 // Cuisine slider
 let mealCuisine = new Glide('.glide__cuisine', small__conf)
-mealCuisine.on('swipe.end', function() {
+mealCuisine.on('swipe.end', function () {
     console.log(mealCuisine._c.Html.slides[mealCuisine.index].innerHTML);
+    selectedFilters['cuisine'] = mealCuisine._c.Html.slides[mealCuisine.index].innerHTML;
 })
 mealCuisine.mount();
 
 // Diet slide
 let mealDiet = new Glide('.glide__diet', small__conf)
-mealDiet.on('swipe.end', function() {
+mealDiet.on('swipe.end', function () {
     console.log(mealDiet._c.Html.slides[mealDiet.index].innerHTML);
+    selectedFilters['diet'] = mealDiet._c.Html.slides[mealDiet.index].innerHTML;
 })
 mealDiet.mount();
 
@@ -49,9 +55,9 @@ let filterMenu = document.getElementById('filter__trigger--js');
 let submitButton = document.getElementById('submit-fliter--js'); // Hide if menu is not open
 
 menuButton.addEventListener('click', () => {
-        filterMenu.classList.add('menu__opened');
-        filterMenu.style.bottom = "0%";
-        submitButton.style.display = "flex";
+    filterMenu.classList.add('menu__opened');
+    filterMenu.style.bottom = "0%";
+    submitButton.style.display = "flex";
 })
 
 submitButton.addEventListener('click', () => {
