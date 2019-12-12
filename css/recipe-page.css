@@ -7,6 +7,7 @@
 .recipe {
     padding: 24px 0px;;
 }
+
 .recipe__info-photo {
     max-width: 100%;
 }
@@ -43,4 +44,20 @@
     flex-direction: column;
     text-align: center;
     transform: translateY(-60%);
+}
+
+.recipe__rating {
+    color: #1A1A1A;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: .9em;
+}
+.recipe__rating {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.recipe-margin {
+    margin-top: -220px;
 }
