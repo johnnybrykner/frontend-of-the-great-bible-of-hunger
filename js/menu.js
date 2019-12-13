@@ -214,7 +214,8 @@ async function getRecipeData(recipeId) {
         document.querySelector('.guide-content').innerHTML += `
             <div class="guide__text-container">
                 <div>
-                    <h1>${randomStepWithoutName.recipeStep.recipeStepId}</h1>
+                    <h1 class="guide__step-number">
+                    </h1>
                 </div>
         
                 <div>
@@ -241,7 +242,6 @@ async function getRecipeData(recipeId) {
 };
 
 function changeStep() {
-    console.log(currentStep);
     const allGuideTextContainers = document.querySelectorAll(".guide__text-container");
 
     let allForRecipeMaking = Array.from(allGuideTextContainers);
@@ -254,6 +254,7 @@ function changeStep() {
         allForRecipeMaking[amountOfTimesItHasRun].classList.remove("guide__step-displayed");
     };
     allForRecipeMaking[currentStep].classList.add("guide__step-displayed");
+    document.querySelector(".guide__step-displayed .guide__step-number").innerText = currentStep;
 };
 
 function setBarry(percentage) {

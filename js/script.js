@@ -128,6 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
         removeDisplayedClass();
         showFixedNavigation();
         recipePage.classList.add('displayed');
+        document.getElementById('menu__trigger--js').style.display = 'flex';
         localStorage.setItem("currentPage", "recipe-page");
     })
 });
